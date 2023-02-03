@@ -36,7 +36,7 @@ We appreciate your interest in using AI to enhance SPFM. However, when submittin
 
 4. **Licensing:** Ensure that the AI generated code is licensed in a way that is compatible with the SPFM project license (MIT License).
 
-5. ** Put a comment at the beginning and end of any AI generated code and give credit to the AI maker(example: OpenAI- ChatGPT)
+5. **Giving credits** Put a comment at the beginning and end of any AI generated code and give credit to the AI maker(example: OpenAI- ChatGPT)
 
 
 By following these guidelines, you can help ensure that AI generated code is of high quality and can be easily integrated into the SPFM project. Thank you for your contribution!
