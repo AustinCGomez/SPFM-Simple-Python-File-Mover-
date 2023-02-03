@@ -1,4 +1,4 @@
-# Simple Python File Mover (SPFM)
+# Simple Python File Mover (SPFM) (Under active development)
 
 A small and efficient Python program that makes moving files around on your Windows PC a breeze. With just a few clicks, you can easily select your source and destination files, and SPFM will do the rest.
 
