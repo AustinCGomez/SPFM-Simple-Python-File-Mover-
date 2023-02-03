@@ -20,9 +20,33 @@ These packages should come pre-installed with your Python installation.
 
 We welcome contributions to SPFM! If you have a bug fix or feature request, please open an issue on GitHub or submit a pull request. You will be added to our list of contributors shown before for any fix that you submit!
 
+## Contributor Guidelines
+
+We welcome contributions to SPFM! If you have a bug fix or feature request, please open an issue on GitHub or submit a pull request.
+
+### Submitting AI generated code
+
+We appreciate your interest in using AI to enhance SPFM. However, when submitting AI generated code, please keep in mind the following guidelines:
+
+1. **Accuracy and performance:** The code should be accurate and perform well in real-world scenarios. Test your code thoroughly before submitting a pull request.
+
+2. **Readability:** The code should be readable and easy to understand for fellow contributors. Follow best practices for writing Python code, and add comments where necessary.
+
+3. **Documentation:** Document any new features or changes in the code and update the `README.md` file accordingly.
+
+4. **Licensing:** Ensure that the AI generated code is licensed in a way that is compatible with the SPFM project license (MIT License).
+
+5. ** Put a comment at the beginning and end of any AI generated code and give credit to the AI maker(example: OpenAI- ChatGPT)
+
+
+By following these guidelines, you can help ensure that AI generated code is of high quality and can be easily integrated into the SPFM project. Thank you for your contribution!
+
+
 Our contributors so far: 
 * Austin Gomez(austinprog) 
 * OpenAI - ChatGPT
+
+
 
 ## License
 
