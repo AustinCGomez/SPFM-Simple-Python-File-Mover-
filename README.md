@@ -42,9 +42,9 @@ We appreciate your interest in using AI to enhance SPFM. However, when submittin
 By following these guidelines, you can help ensure that AI generated code is of high quality and can be easily integrated into the SPFM project. Thank you for your contribution!
 
 
-Our contributors so far: 
-* Austin Gomez(austinprog) 
-* OpenAI - ChatGPT
+### Our contributors so far: 
+* #### Austin Gomez(austinprog) 
+* #### OpenAI - ChatGPT
 
 
 
