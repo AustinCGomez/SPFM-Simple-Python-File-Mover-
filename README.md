@@ -18,7 +18,11 @@ These packages should come pre-installed with your Python installation.
 
 ## Contributing
 
-We welcome contributions to SPFM! If you have a bug fix or feature request, please open an issue on GitHub or submit a pull request.
+We welcome contributions to SPFM! If you have a bug fix or feature request, please open an issue on GitHub or submit a pull request. You will be added to our list of contributors shown before for any fix that you submit!
+
+Our contributors so far: 
+* Austin Gomez(austinprog) 
+* OpenAI - ChatGPT
 
 ## License
 
