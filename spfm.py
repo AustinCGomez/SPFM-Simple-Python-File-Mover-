@@ -1,44 +1,47 @@
+# OpenAI ChatGPT generated the initial version of this code. 
+
 import tkinter as tk
-from tkinter import filedialog
+import tkinter.filedialog
+import tkinter.messagebox
 import shutil
 
-def choose_src_folder():
-    global src_folder
-    src_folder = filedialog.askdirectory()
+def select_src_folder():
+    src_folder = tk.filedialog.askdirectory(title='Select Source Folder')
+    src_folder_label.config(text=src_folder)
 
-def choose_dst_folder():
-    global dst_folder
-    dst_folder = filedialog.askdirectory()
+def select_dest_folder():
+    dest_folder = tk.filedialog.askdirectory(title='Select Destination Folder')
+    dest_folder_label.config(text=dest_folder)
 
 def move_files():
-    shutil.move(src_folder, dst_folder)
+    src_folder = src_folder_label['text']
+    dest_folder = dest_folder_label['text']
 
-root = tk.Tk()
-root.geometry("800x800")
-root.title("File Mover")
+    if src_folder == 'No folder selected' or dest_folder == 'No folder selected':
+        tk.messagebox.showerror('Error', 'Please select both source and destination folders')
+        return
 
-src_folder = ""
-dst_folder = ""
+    files = tk.filedialog.askopenfilenames(title='Select files', initialdir=src_folder)
+    for file in files:
+        shutil.move(file, dest_folder)
+    tk.messagebox.showinfo('Success', 'Files moved successfully')
 
-src_label = tk.Label(root, text="From:")
-src_label.pack()
+app = tk.Tk()
+app.title('File Mover')
 
-src_entry = tk.Entry(root, textvariable=src_folder)
-src_entry.pack()
+src_folder_label = tk.Label(text='No folder selected', width=30)
+src_folder_label.grid(row=0, column=0, padx=10, pady=10)
 
-src_button = tk.Button(root, text="Choose Source Folder", command=choose_src_folder)
-src_button.pack()
+select_src_folder_button = tk.Button(text='Select Source Folder', command=select_src_folder)
+select_src_folder_button.grid(row=0, column=1, padx=10, pady=10)
 
-dst_label = tk.Label(root, text="To:")
-dst_label.pack()
+dest_folder_label = tk.Label(text='No folder selected', width=30)
+dest_folder_label.grid(row=1, column=0, padx=10, pady=10)
 
-dst_entry = tk.Entry(root, textvariable=dst_folder)
-dst_entry.pack()
+select_dest_folder_button = tk.Button(text='Select Destination Folder', command=select_dest_folder)
+select_dest_folder_button.grid(row=1, column=1, padx=10, pady=10)
 
-dst_button = tk.Button(root, text="Choose Destination Folder", command=choose_dst_folder)
-dst_button.pack()
+move_files_button = tk.Button(text='Move Files', command=move_files)
+move_files_button.grid(row=2, column=0, columnspan=2, pady=10)
 
-move_button = tk.Button(root, text="Move Files", command=move_files)
-move_button.pack()
-
-root.mainloop()
+app.mainloop()
