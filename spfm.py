@@ -1,47 +1,57 @@
-# OpenAI ChatGPT generated the initial version of this code. 
+# OpenAI ChatGPT generatd various portions of the code below.
 
 import tkinter as tk
 import tkinter.filedialog
-import tkinter.messagebox
+import os
 import shutil
+import tkinter.ttk
 
-def select_src_folder():
-    src_folder = tk.filedialog.askdirectory(title='Select Source Folder')
-    src_folder_label.config(text=src_folder)
+def choose_src_dir():
+    src_dir = tkinter.filedialog.askdirectory(title="Select Source Directory")
+    src_entry.insert(0, src_dir)
 
-def select_dest_folder():
-    dest_folder = tk.filedialog.askdirectory(title='Select Destination Folder')
-    dest_folder_label.config(text=dest_folder)
+def choose_dst_dir():
+    dst_dir = tkinter.filedialog.askdirectory(title="Select Destination Directory")
+    dst_entry.insert(0, dst_dir)
 
 def move_files():
-    src_folder = src_folder_label['text']
-    dest_folder = dest_folder_label['text']
+    src = src_entry.get()
+    dst = dst_entry.get()
+    progress_bar["maximum"] = 100
+    for i, filename in enumerate(os.listdir(src)):
+        src_file = os.path.join(src, filename)
+        dst_file = os.path.join(dst, filename)
+        shutil.move(src_file, dst_file)
+        progress = int((i + 1) * 100 / len(os.listdir(src)))
+        progress_bar["value"] = progress
+        root.update()
 
-    if src_folder == 'No folder selected' or dest_folder == 'No folder selected':
-        tk.messagebox.showerror('Error', 'Please select both source and destination folders')
-        return
+root = tk.Tk()
+root.geometry("500x200")
+root.title("File Mover")
 
-    files = tk.filedialog.askopenfilenames(title='Select files', initialdir=src_folder)
-    for file in files:
-        shutil.move(file, dest_folder)
-    tk.messagebox.showinfo('Success', 'Files moved successfully')
+src_label = tk.Label(root, text="Source Directory:")
+src_label.grid(row=0, column=0, padx=5, pady=5)
 
-app = tk.Tk()
-app.title('File Mover')
+src_entry = tk.Entry(root)
+src_entry.grid(row=0, column=1, padx=5, pady=5)
 
-src_folder_label = tk.Label(text='No folder selected', width=30)
-src_folder_label.grid(row=0, column=0, padx=10, pady=10)
+src_button = tk.Button(root, text="Choose", command=choose_src_dir)
+src_button.grid(row=0, column=2, padx=5, pady=5)
 
-select_src_folder_button = tk.Button(text='Select Source Folder', command=select_src_folder)
-select_src_folder_button.grid(row=0, column=1, padx=10, pady=10)
+dst_label = tk.Label(root, text="Destination Directory:")
+dst_label.grid(row=1, column=0, padx=5, pady=5)
 
-dest_folder_label = tk.Label(text='No folder selected', width=30)
-dest_folder_label.grid(row=1, column=0, padx=10, pady=10)
+dst_entry = tk.Entry(root)
+dst_entry.grid(row=1, column=1, padx=5, pady=5)
 
-select_dest_folder_button = tk.Button(text='Select Destination Folder', command=select_dest_folder)
-select_dest_folder_button.grid(row=1, column=1, padx=10, pady=10)
+dst_button = tk.Button(root, text="Choose", command=choose_dst_dir)
+dst_button.grid(row=1, column=2, padx=5, pady=5)
 
-move_files_button = tk.Button(text='Move Files', command=move_files)
-move_files_button.grid(row=2, column=0, columnspan=2, pady=10)
+progress_bar = tkinter.ttk.Progressbar(root, orient="horizontal", length=400, mode="determinate")
+progress_bar.grid(row=2, column=1, padx=5, pady=5)
 
-app.mainloop()
+move_button = tk.Button(root, text="Move Files", command=move_files)
+move_button.grid(row=3, column=1, padx=5, pady=5)
+
+root.mainloop()
